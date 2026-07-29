@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Schwung Enterprise Pest Management — Service Launch</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #000;
+    font-family: 'Inter Tight', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    color: #fff;
+    overflow: hidden;
+    width: 100vw;
+    height: 100vh;
+  }
+  .frame {
+    position: fixed; inset: 0;
+    width: 1920px; height: 1080px;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+    overflow: hidden;
+  }
+  .frame.active { opacity: 1; pointer-events: auto; }
+  .bg { position: absolute; inset: 0; background-size: cover; background-position: center; }
+  .overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0.0) 0%, rgba(0,0,0,0.6) 100%); }
+  .glow { position: absolute; width: 1200px; height: 1200px; border-radius: 50%; filter: blur(150px); pointer-events: none; }
+  h1, h2, h3 { font-weight: 900; line-height: 0.95; letter-spacing: -0.04em; margin: 0; text-align: center; text-shadow: 0 4px 30px rgba(0,0,0,0.6); }
+  .h-mega { font-size: 200px; }
+  .h-big { font-size: 140px; }
+  .h-med { font-size: 90px; }
+  .em-red { color: #e63946; }
+  .em-yellow { color: #f4d03f; }
+  .em-green { color: #06d6a0; }
+  .label { font-size: 22px; font-weight: 600; letter-spacing: 0.3em; text-transform: uppercase; opacity: 0.8; margin-bottom: 30px; }
+  .caption { position: absolute; bottom: 60px; left: 0; right: 0; text-align: center; font-size: 24px; letter-spacing: 0.2em; opacity: 0.7; }
+  .progress { position: fixed; top: 0; left: 0; height: 6px; background: #e63946; transition: width 0.2s linear; z-index: 100; box-shadow: 0 0 20px #e63946; }
+  .pulse { animation: pulse 1.5s ease-in-out infinite; }
+  @keyframes pulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+  .shake { animation: shake 0.4s ease-in-out; }
+  @keyframes shake { 0%,100% { transform: translateX(0); } 25% { transform: translateX(-15px) rotate(-2deg); } 75% { transform: translateX(15px) rotate(2deg); } }
+  .slide-in { animation: slideIn 0.8s ease-out; }
+  @keyframes slideIn { from { transform: translateY(100px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+  .zoom-in { animation: zoomIn 6s linear forwards; }
+  @keyframes zoomIn { from { transform: scale(1); } to { transform: scale(1.15); } }
+  .stamp { position: absolute; top: 60px; right: 60px; font-size: 20px; letter-spacing: 0.2em; opacity: 0.5; }
+  .stamp .badge { display: inline-block; padding: 10px 20px; border: 2px solid #06d6a0; border-radius: 30px; color: #06d6a0; font-weight: 700; }
+  .ken-burns { animation: kenBurns 8s ease-in-out infinite alternate; }
+  @keyframes kenBurns { from { transform: scale(1) translate(0,0); } to { transform: scale(1.1) translate(-20px,-20px); } }
+  .bug-row { display: flex; gap: 60px; margin-top: 50px; }
+  .bug { font-size: 120px; animation: wiggle 2s ease-in-out infinite; display: inline-block; }
+  .bug:nth-child(2) { animation-delay: 0.3s; }
+  .bug:nth-child(3) { animation-delay: 0.6s; }
+  .bug:nth-child(4) { animation-delay: 0.9s; }
+  @keyframes wiggle { 0%,100% { transform: translateY(0) rotate(0); } 50% { transform: translateY(-20px) rotate(5deg); } }
+  .qr-zone { background: rgba(255,255,255,0.95); padding: 30px 40px; border-radius: 20px; display: inline-flex; align-items: center; gap: 30px; }
+  .qr-zone img { width: 200px; height: 200px; }
+  .qr-text { color: #1a3a5c; }
+  .qr-phone { font-size: 60px; font-weight: 900; color: #1a3a5c; }
+  .qr-wa { font-size: 32px; color: #25D366; font-weight: 700; margin-top: 8px; }
+  .cta-button { display: inline-block; padding: 30px 80px; background: #e63946; color: white; font-size: 50px; font-weight: 900; border-radius: 60px; box-shadow: 0 20px 60px rgba(230,57,70,0.5); letter-spacing: 0.05em; }
+  .stamp-corner { position: absolute; top: 40px; left: 40px; font-size: 18px; letter-spacing: 0.3em; opacity: 0.6; }
+</style>
+</head>
+<body>
+
+<div class="progress" id="progress" style="width:0%"></div>
+
+<!-- ==================== SCENE 1: HUMOROUS HOOK (5s) ==================== -->
+<section class="frame active" data-duration="5000" id="f1">
+  <div class="bg" style="background: radial-gradient(circle at center, #ff6b6b 0%, #c0392b 50%, #2c3e50 100%);"></div>
+  <div class="glow" style="background: #e63946; top: -300px; left: -300px;"></div>
+  <div class="stamp-corner">SCHWUNG · SERVICE LAUNCH</div>
+  <div class="shake" style="text-align: center; z-index: 2;">
+    <div class="label">⚠️ WARNING: PESTS INCOMING</div>
+    <h1 class="h-mega">PESTS GOT<br/>YOU <span class="em-yellow shake">DOWN</span>?</h1>
+    <div class="bug-row">
+      <span class="bug">🪳</span>
+      <span class="bug">🐜</span>
+      <span class="bug">🪲</span>
+      <span class="bug">🐀</span>
+    </div>
+  </div>
+  <div class="caption">😱 We've all been there...</div>
+</section>
+
+<!-- ==================== SCENE 2: TOOLS READY (6s) ==================== -->
+<section class="frame" data-duration="6000" id="f2">
+  <div class="bg" style="background-image: url('assets/tools_full.png');" class="ken-burns"></div>
+  <div class="overlay"></div>
+  <div class="glow" style="background: #06d6a0; bottom: -400px; right: -400px; opacity: 0.4;"></div>
+  <div class="stamp-corner" style="color: #06d6a0;">⚙️ FULLY EQUIPPED</div>
+  <div class="slide-in" style="z-index: 2; text-align: center;">
+    <div class="label" style="color: #06d6a0;">LOADED FOR THE JOB</div>
+    <h1 class="h-big" style="color: white; text-shadow: 0 4px 40px rgba(0,0,0,0.9);">DON'T SWEAT IT!</h1>
+    <h2 class="h-med" style="margin-top: 30px; color: #f4d03f;">Schwung Enterprise is HERE</h2>
+  </div>
+  <div class="caption">🧰 Romeo sprayers · Satun ULV · Battery & electric gear — all loaded</div>
+</section>
+
+<!-- ==================== SCENE 3: HERO MOMENT (4s) ==================== -->
+<section class="frame" data-duration="4000" id="f3">
+  <div class="bg" style="background: linear-gradient(135deg, #0f2942 0%, #1a3a5c 50%, #2c5282 100%);"></div>
+  <div class="glow" style="background: #e63946; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 800px; height: 800px;"></div>
+  <div class="pulse" style="text-align: center; z-index: 2;">
+    <div class="label em-yellow">YOUR PEST CONTROL HEROES</div>
+    <h1 class="h-mega" style="color: white;">SCHWUNG<br/><span class="em-red">ENTERPRISE</span></h1>
+    <h2 class="h-med" style="margin-top: 30px; color: white; opacity: 0.9;">PEST MANAGEMENT</h2>
+  </div>
+  <div class="caption">⭐ Trusted · Professional · Effective</div>
+</section>
+
+<!-- ==================== SCENE 4: ACTION FOOTAGE (8s) ==================== -->
+<section class="frame" data-duration="8000" id="f4">
+  <video class="bg" autoplay muted loop playsinline style="object-fit: cover;">
+    <source src="assets/footage_scene.mp4" type="video/mp4">
+  </video>
+  <div class="overlay" style="background: linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.7) 100%);"></div>
+  <div class="stamp-corner" style="color: #f4d03f;">📍 ON THE JOB</div>
+  <div class="slide-in" style="z-index: 2; text-align: center;">
+    <div class="label em-yellow">REAL WORK. REAL RESULTS.</div>
+    <h1 class="h-big" style="color: white; text-shadow: 0 4px 40px rgba(0,0,0,0.9);">YOU HAVE <span class="em-red">PEST</span>,</h1>
+    <h1 class="h-big" style="color: white; text-shadow: 0 4px 40px rgba(0,0,0,0.9);">WE HAVE <span class="em-green">SOLUTION!</span></h1>
+  </div>
+  <div class="caption">🌿 Treating your space, inside and out</div>
+</section>
+
+<!-- ==================== SCENE 5: SOLUTION CELEBRATION (5s) ==================== -->
+<section class="frame" data-duration="5000" id="f5">
+  <div class="bg" style="background: linear-gradient(135deg, #06d6a0 0%, #1a8c5f 50%, #0a4d35 100%);"></div>
+  <div class="glow" style="background: #f4d03f; top: -200px; right: -200px; opacity: 0.5;"></div>
+  <div class="stamp-corner" style="color: #0a4d35;">✅ MISSION ACCOMPLISHED</div>
+  <div class="pulse" style="text-align: center; z-index: 2;">
+    <div class="label" style="color: #0a4d35;">PEST-FREE ZONE ACTIVATED</div>
+    <h1 class="h-mega" style="color: white; text-shadow: 0 4px 40px rgba(0,0,0,0.4);">PROBLEM<br/><span class="em-yellow">SOLVED!</span> ✨</h1>
+  </div>
+  <div class="caption">🏆 Effective · Eco-Friendly · Guaranteed</div>
+</section>
+
+<!-- ==================== SCENE 6: BRANDING + POSTER (10s) ==================== -->
+<section class="frame" data-duration="10000" id="f6">
+  <div class="bg ken-burns" style="background-image: url('assets/poster_full.png');"></div>
+  <div class="overlay" style="background: linear-gradient(180deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0.7) 100%);"></div>
+  <div class="stamp-corner" style="color: white; opacity: 0.9;">🏢 ABOUT US</div>
+  <div class="slide-in" style="z-index: 2; text-align: center; max-width: 1700px;">
+    <h1 class="h-big" style="color: white; text-shadow: 0 4px 30px rgba(0,0,0,0.9);">WHY CHOOSE US?</h1>
+    <h2 class="h-med" style="margin-top: 30px; color: #f4d03f; text-shadow: 0 4px 30px rgba(0,0,0,0.9);">
+      ✅ Effective & Eco-Friendly<br/>
+      ✅ Expert Technicians<br/>
+      ✅ Guaranteed Results<br/>
+      ✅ KPKM-Approved Chemicals
+    </h2>
+  </div>
+  <div class="caption" style="font-size: 28px;">Cockroach · General · Termite · Ants & Bedbugs · Rodents</div>
+</section>
+
+<!-- ==================== SCENE 7: CALL TO ACTION (4s) ==================== -->
+<section class="frame" data-duration="4000" id="f7">
+  <div class="bg" style="background: linear-gradient(135deg, #e63946 0%, #c0392b 50%, #1a3a5c 100%);"></div>
+  <div class="glow" style="background: #f4d03f; bottom: -300px; right: -300px; opacity: 0.6;"></div>
+  <div class="pulse" style="text-align: center; z-index: 2;">
+    <div class="label em-yellow">📞 CONTACT US TODAY</div>
+    <h1 class="h-big" style="color: white; margin-bottom: 40px;">DEFEND YOUR<br/><span class="em-yellow">SPACE</span> TODAY!</h1>
+    <div class="cta-button">CALL NOW 📞</div>
+    <h2 class="h-med" style="margin-top: 40px; color: white;">011 1534 2818</h2>
+  </div>
+  <div class="caption">💬 WhatsApp: Scan QR · We cover most pest!</div>
+</section>
+
+<script>
+  // Auto-play frame sequence
+  const frames = document.querySelectorAll('.frame');
+  const total = frames.length;
+  const progressEl = document.getElementById('progress');
+  let i = 0, playing = true, timer = null;
+
+  function totalMs() {
+    return [...frames].reduce((a,f) => a + +f.dataset.duration, 0);
+  }
+
+  function show(n) {
+    frames.forEach(f => f.classList.remove('active'));
+    // Pause and reset all videos when switching
+    frames.forEach(f => {
+      const v = f.querySelector('video');
+      if (v) { v.pause(); v.currentTime = 0; }
+    });
+    frames[n].classList.add('active');
+    i = n;
+    let elapsed = 0;
+    for (let k = 0; k < n; k++) elapsed += +frames[k].dataset.duration;
+    progressEl.style.width = (elapsed / totalMs() * 100) + '%';
+    // Play video in active frame if any
+    const av = frames[n].querySelector('video');
+    if (av) av.play();
+  }
+
+  function next() {
+    if (i < total - 1) { i++; show(i); restartTimer(); }
+    else { playing = false; progressEl.style.width = '100%'; }
+  }
+
+  function restartTimer() {
+    clearInterval(timer);
+    if (!playing) return;
+    let elapsed = 0;
+    timer = setInterval(() => {
+      elapsed += 50;
+      const dur = +frames[i].dataset.duration;
+      if (elapsed >= dur) next();
+    }, 50);
+  }
+
+  // Allow URL hash to seek for headless capture: #frame=3 pauses on frame 3
+  function applyHash() {
+    const m = location.hash.match(/frame=(\d+)/);
+    if (m) { playing = false; clearInterval(timer); show(+m[1] - 1); progressEl.style.width = '0%'; }
+    else { show(0); restartTimer(); }
+  }
+  window.addEventListener('hashchange', applyHash);
+  applyHash();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Story | PestBro - KPP Pest Management</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root { --brand-navy: #0f172a; --brand-yellow: #f4d03f; }
+        body { font-family: 'Inter', sans-serif; }
+        .serif { font-family: 'Playfair Display', serif; }
+        .text-navy { color: var(--brand-navy); }
+        .bg-navy { background-color: var(--brand-navy); }
+        .text-yellow { color: var(--brand-yellow); }
+        .bg-yellow { background-color: var(--brand-yellow); }
+        .fade-in { animation: fadeInUp 1s ease-out forwards; }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        
+        /* LUXURY GOLD TAGS */
+        .luxury-tag {
+            background: var(--brand-navy);
+            color: var(--brand-yellow);
+            border: 1px solid var(--brand-yellow);
+            transition: all 0.3s ease;
+            cursor: default;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        .luxury-tag:hover {
+            background: var(--brand-yellow);
+            color: var(--brand-navy);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2);
+        }
+
+        .whatsapp-float {
+            position: fixed; bottom: 30px; right: 30px; background-color: #25d366; color: white;
+            width: 60px; height: 60px; border-radius: 50px; z-index: 100; display: flex;
+            align-items: center; justify-content: center; font-size: 30px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        .whatsapp-float:hover { transform: scale(1.1) rotate(10deg); }
+    </style>
+</head>
+<body class="bg-white text-slate-900 overflow-x-hidden">
+
+    <nav class="fixed w-full z-50 transition-all duration-300 px-6 py-4">
+        <div class="container mx-auto flex justify-between items-center bg-white/80 backdrop-blur-md rounded-full px-6 py-3 shadow-sm border border-gray-100">
+            <div class="flex items-center gap-3">
+                <img src="assets/logo.jpg" alt="Logo" class="h-8 w-8 rounded-full object-cover border border-yellow">
+                <span class="text-xl font-bold tracking-tight text-navy">PestBro</span>
+            </div>
+            <div class="hidden md:flex gap-8 text-sm font-semibold uppercase tracking-widest">
+                <a href="index.html" class="hover:text-yellow transition">Home</a>
+                <a href="index.html#action" class="hover:text-yellow transition">Action</a>
+                <a href="index.html#services" class="hover:text-yellow transition">Services</a>
+                <a href="about.html" class="text-yellow">Our Story</a>
+                <a href="index.html#contact" class="hover:text-yellow transition">Contact</a>
+            </div>
+            <a href="tel:01115342818" class="bg-navy text-white px-5 py-2 rounded-full text-xs font-bold hover:bg-yellow hover:text-navy transition">CALL NOW</a>
+        </div>
+    </nav>
+
+    <section class="relative h-[60vh] flex items-center justify-center bg-navy text-white overflow-hidden">
+        <div class="absolute inset-0 opacity-40">
+            <img src="assets/about-bg.jpg" class="w-full h-full object-cover" alt="Background">
+        </div>
+        <div class="absolute inset-0 bg-gradient-to-b from-navy/60 via-navy/40 to-navy"></div>
+        <div class="relative z-10 text-center px-4 fade-in">
+            <span class="text-yellow uppercase tracking-[0.3em] text-xs font-bold mb-4 block">Since 2002</span>
+            <h1 class="serif text-4xl md:text-6xl font-bold leading-tight mb-6">
+                A Legacy of <br><span class="italic">Precision.</span>
+            </h1>
+            <div class="w-10 h-1 bg-yellow mx-auto"></div>
+        </div>
+    </section>
+
+    <section class="py-24 px-6">
+        <div class="container mx-auto max-w-6xl">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+                <div class="relative">
+                    <div class="absolute -top-10 -left-10 w-32 h-32 bg-yellow opacity-20 rounded-full blur-3xl"></div>
+                    <img src="assets/origin-story.jpg" alt="Where it Started" class="rounded-2xl shadow-2xl relative z-10 w-full object-cover h-[400px]">
+                    <div class="absolute -bottom-6 -right-6 bg-white p-6 rounded-xl shadow-lg z-20 hidden md:block border-l-4 border-yellow">
+                        <p class="text-sm font-bold text-navy">20+ Years</p>
+                        <p class="text-xs text-gray-500">Industry Experience</p>
+                    </div>
+                </div>
+                <div class="space-y-6">
+                    <h2 class="serif text-3xl font-bold text-navy leading-tight">Where it Started: <br>Rooted in Science.</h2>
+                    <p class="text-gray-600 text-lg leading-relaxed">
+                        KPP Pest Management wasn't born from a business plan, but from a scientific pursuit. Founded in 2002, our foundation lies in the depths of the agrochemical industry.
+                    </p>
+                    <p class="text-gray-600 leading-relaxed">
+                        Our founder's tenure as an R&D Manager allowed us to bridge the gap between laboratory research and field application. This evidence-based approach is what separates a "spray service" from a true management solution.
+                    </p>
+                    <div class="pt-4">
+                        <a href="index.html#services" class="inline-flex items-center gap-2 text-navy font-bold hover:text-yellow transition uppercase text-xs tracking-widest">
+                        Discover Our Method <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-navy text-white py-24 px-6">
+        <div class="container mx-auto max-w-6xl">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+                <div class="max-w-xl">
+                    <h2 class="serif text-4xl font-bold mb-4">Where We <span class="text-yellow">Operate.</span></h2>
+                    <p class="text-gray-400 text-lg">From luxury penthouses to corporate towers, we secure every corner of your environment.</p>
+                </div>
+                <div class="text-yellow font-bold uppercase tracking-widest text-sm border-b border-yellow pb-2">
+                    Full Spectrum Coverage
+                </div>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
+                <div class="group">
+                    <div class="text-yellow text-3xl mb-4 group-hover:translate-x-2 transition-transform duration-300"><i class="fa-solid fa-house-user"></i></div>
+                    <h3 class="text-xl font-bold mb-2">Residential</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Private homes, high-rise condos, and luxury apartments.</p>
+                </div>
+                <div class="group">
+                    <div class="text-yellow text-3xl mb-4 group-hover:translate-x-2 transition-transform duration-300"><i class="fa-solid fa-building"></i></div>
+                    <h3 class="text-xl font-bold mb-2">Commercial</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Corporate offices, retail outlets, and commercial hubs.</p>
+                </div>
+                <div class="group">
+                    <div class="text-yellow text-3xl mb-4 group-hover:translate-x-2 transition-transform duration-300"><i class="fa-solid fa-city"></i></div>
+                    <h3 class="text-xl font-bold mb-2">Developments</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Property management and large-scale residential developments.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 px-6 bg-slate-50">
+        <div class="container mx-auto max-w-6xl">
+            <div class="text-center mb-20">
+                <span class="text-yellow uppercase tracking-widest text-xs font-bold mb-4 block">Proven Track Record</span>
+                <h2 class="serif text-4xl font-bold text-navy">Trusted by the <span class="italic">Homeowners & Businesses.</span></h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
+                <!-- Residential -->
+                <div class="flex flex-col gap-6">
+                    <div class="flex items-center gap-3 mb-2">
+                        <span class="w-8 h-px bg-yellow"></span>
+                        <h3 class="text-navy font-bold uppercase tracking-widest text-xs">Residential Icons</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="luxury-tag px-4 py-2 rounded-lg text-xs font-semibold">Menara Residence, Bukit Jelutong</span>
+                        <span class="luxury-tag px-4 py-2 rounded-lg text-xs font-semibold">Palmyra Bangsar</span>
+                        <span class="luxury-tag px-4 py-2 rounded-lg text-xs font-semibold">M Oscar Residence</span>
+                        <span class="luxury-tag px-4 py-2 rounded-lg text-xs font-semibold">Sri Hartamas Properties</span>
+                        <span class="luxury-tag px-4 py-2 rounded-lg text-xs font-semibold">Tejani 2, Bukit Tunku</span>
+                        <span class="luxury-tag px-4 py-2 rounded-lg text-xs font-semibold">SP Setia Alam</span>
+                    </div>
+                </div>
+                <!-- Corporate -->
+                <div class="flex flex-col gap-6">
+                    <div class="flex items-center gap-3 mb-2">
+                        <span class="w-8 h-px bg-yellow"></span>
+                        <h3 class="text-navy font-bold uppercase tracking-widest text-xs">Corporate Powerhouses</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="luxury-tag px-4 py-2 rounded-lg text-xs font-semibold">SOCC Office, Naza Tower, KL</span>
+                        <span class="luxury-tag px-4 py-2 rounded-lg text-xs font-semibold">JMB / Management Corps</span>
+                        <span class="luxury-tag px-4 py-2 rounded-lg text-xs font-semibold">Property Developers</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 px-6 bg-navy text-white relative overflow-hidden">
+        <div class="container mx-auto max-w-4xl relative z-10">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+                <div class="space-y-6">
+                    <div class="p-6 bg-white/5 rounded-2xl border border-white/10 backdrop-blur-sm">
+                        <h3 class="text-yellow font-bold uppercase tracking-widest text-xs mb-3">Our Mission</h3>
+                        <p class="text-lg font-light italic opacity-90">"To deliver professional pest management solutions through scientific knowledge and quality workmanship."</p>
+                    </div>
+                    <div class="p-6 bg-white/5 rounded-2xl border border-white/10 backdrop-blur-sm">
+                        <h3 class="text-yellow font-bold uppercase tracking-widest text-xs mb-3">Our Vision</h3>
+                        <p class="text-lg font-light italic opacity-90">"To be Malaysia's most trusted pest management company, recognized for technical excellence and integrity."</p>
+                    </div>
+                </div>
+                <div>
+                    <h2 class="serif text-4xl font-bold mb-6 leading-tight">The <span class="text-yellow italic">PestBro</span> Difference.</h2>
+                    <p class="text-gray-400 leading-relaxed mb-8">
+                        We believe that effective pest management is not simply about eliminating pests—it is about protecting homes and businesses through knowledge, experience, and preventive care.
+                    </p>
+                    <div class="bg-yellow text-navy p-6 rounded-2xl font-bold text-center shadow-xl">
+                        Now operating under <span class="underline">Schwung Enterprise</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
+            <img src="https://images.unsplash.com/photo-1582213782487-7747f677a79e?auto=format&fit=crop&w=1920&q=80" class="w-full h-full object-cover" alt="BG">
+        </div>
+    </section>
+
+    <footer class="bg-gray-900 text-white py-12 px-4 border-t-4 border-yellow">
+        <div class="container mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="flex items-center gap-3">
+                <img src="assets/logo.jpg" alt="Logo" class="h-8 w-8 rounded-full object-cover border border-yellow">
+                <span class="text-xl font-bold tracking-tight">PestBro</span>
+            </div>
+            <p class="text-gray-500 text-xs">&copy; 2026 PestBro Enterprise. All Rights Reserved.</p>
+            <div class="flex gap-4 text-xl">
+                <a href="#" class="hover:text-yellow transition"><i class="fa-brands fa-facebook"></i></a>
+                <a href="#" class="hover:text-yellow transition"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" class="hover:text-yellow transition"><i class="fa-brands fa-threads"></i></a>
+            </div>
+        </div>
+    </footer}
+
+    <a href="https://wa.me/601115342818" class="whatsapp-float" target="_blank">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+</body>
+</html>
