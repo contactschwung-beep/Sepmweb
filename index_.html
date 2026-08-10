@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PestBro | Your Pest Problem, Our Solutions</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: '#1a3a5c',
+                        yellow: '#f4d03f',
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --brand-navy: #1a3a5c;
+            --brand-yellow: #f4d03f;
+            --brand-red: #e63946;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        .serif { font-family: 'Playfair Display', serif; }
+        .bg-navy { background-color: var(--brand-navy); }
+        .text-navy { color: var(--brand-navy); }
+        .bg-yellow { background-color: var(--brand-yellow); }
+        .text-yellow { color: var(--brand-yellow); }
+        
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(26, 58, 92, 0.7);
+            z-index: 10;
+        }
+        
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25d366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 2px 2px 3px #999;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s ease;
+        }
+        .whatsapp-float:hover { transform: scale(1.1); }
+
+        .video-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 1rem;
+            aspect-ratio: 16/9;
+        }
+        .video-card video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: filter 0.3s ease;
+        }
+        .video-card:hover video {
+            filter: brightness(1.1);
+        }
+        html { scroll-behavior: smooth; }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        .reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-delay-2 { transition-delay: 0.2s; }
+        .reveal-delay-3 { transition-delay: 0.3s; }
+        .reveal-delay-4 { transition-delay: 0.4s; }
+        .reveal-delay-5 { transition-delay: 0.5s; }
+
+        @keyframes pulse-ring {
+            0% { box-shadow: 0 0 0 0 rgba(37,211,102,0.55); }
+            70% { box-shadow: 0 0 0 16px rgba(37,211,102,0); }
+            100% { box-shadow: 0 0 0 0 rgba(37,211,102,0); }
+        }
+        .whatsapp-float { animation: pulse-ring 2.5s infinite; }
+
+        .dot-grid {
+            background-image: radial-gradient(circle, rgba(26,58,92,0.08) 1px, transparent 1px);
+            background-size: 26px 26px;
+        }
+
+        .marquee-track {
+            display: flex;
+            white-space: nowrap;
+            width: max-content;
+            animation: marquee-scroll 25s linear infinite;
+        }
+        @keyframes marquee-scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .pest-run-track {
+            position: absolute;
+            bottom: 18px;
+            left: -40px;
+            font-size: 1.75rem;
+            opacity: 0;
+            pointer-events: none;
+        }
+        .pest-card:hover .pest-run-track {
+            opacity: 1;
+            animation: run-across 1.3s linear;
+        }
+        @keyframes run-across {
+            0% { transform: translateX(0) scaleX(1); }
+            47% { transform: translateX(220px) scaleX(1); }
+            50% { transform: translateX(220px) scaleX(-1); }
+            97% { transform: translateX(0) scaleX(-1); }
+            100% { transform: translateX(0) scaleX(-1); opacity: 0; }
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-900 bg-gray-50">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 transition-all duration-300 px-6 py-4">
+        <div class="container mx-auto flex justify-between items-center bg-white/80 backdrop-blur-md rounded-full px-6 py-3 shadow-sm border border-gray-100">
+            <div class="flex items-center gap-3">
+                <img src="assets/logo.jpg" alt="PestBro Logo" class="h-8 w-8 rounded-full object-cover border border-yellow">
+                <span class="text-xl font-bold tracking-tight text-navy">PestBro</span>
+            </div>
+            <div class="hidden md:flex gap-8 text-sm font-semibold uppercase tracking-widest text-navy">
+                <a href="#home" class="hover:text-yellow transition">Home</a>
+                <a href="#action" class="hover:text-yellow transition">Action</a>
+                <a href="#services" class="hover:text-yellow transition">Services</a>
+                <a href="about.html" class="hover:text-yellow transition">About</a>
+                <a href="#contact" class="hover:text-yellow transition">Contact</a>
+            </div>
+            <a href="tel:01115342818" class="bg-navy text-white px-5 py-2 rounded-full text-xs font-bold hover:bg-yellow hover:text-navy transition">CALL NOW</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative h-[70vh] flex items-center justify-center text-center text-white overflow-hidden">
+        <video autoplay muted loop playsinline class="absolute z-0 w-full h-full object-cover">
+            <source src="assets/hero-video.mp4" type="video/mp4">
+        </video>
+        <div class="video-overlay"></div>
+        <div class="relative z-20 max-w-2xl px-6 pt-24 md:pt-16">
+            <h1 class="serif text-4xl md:text-6xl font-bold mb-4 leading-tight">
+                Your Pest Problem, <br><span class="text-yellow">Our Solutions.</span>
+            </h1>
+            <p class="text-lg mb-8 opacity-90 font-light">Professional and guaranteed pest control services to protect your home and business.</p>
+            <div class="flex flex-col md:flex-row gap-4 justify-center">
+                <a href="#action" class="bg-yellow text-navy px-6 py-3 rounded-lg font-bold text-md hover:bg-white transition shadow-lg">See Us In Action</a>
+                <a href="https://wa.me/601115342818" class="bg-white text-navy px-6 py-3 rounded-lg font-bold text-md hover:bg-gray-200 transition shadow-lg">Book Inspection</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Action Gallery Section -->
+    <section id="action" class="py-20 px-4 bg-white">
+        <div class="container mx-auto">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-4xl font-bold text-navy mb-4">PestBro in Action</h2>
+                <div class="w-24 h-1 bg-yellow mx-auto"></div>
+                <p class="mt-4 text-gray-600 max-w-2xl mx-auto">Real-time results from our latest treatments.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+                <div class="video-card group shadow-lg reveal reveal-delay-1">
+                    <div class="absolute inset-0 z-10 flex flex-col items-center justify-center gap-2 bg-navy/30 opacity-100 group-hover:opacity-0 transition-opacity duration-300 pointer-events-none">
+                        <i class="fa-solid fa-circle-play text-white text-4xl drop-shadow-lg"></i>
+                        <span class="text-white text-xs font-bold uppercase tracking-widest drop-shadow-lg">Hover to Play</span>
+                    </div>
+                    <video muted loop onmouseover="this.play()" onmouseout="this.pause(); this.currentTime=0;">
+                        <source src="assets/precision-treatment.mp4" type="video/mp4">
+                    </video>
+                    <div class="absolute bottom-0 left-0 right-0 z-20 p-3 bg-gradient-to-t from-navy to-transparent text-white text-sm">
+                        <p class="font-bold">Precision Treatment</p>
+                    </div>
+                </div>
+                <div class="video-card group shadow-lg reveal reveal-delay-2">
+                    <div class="absolute inset-0 z-10 flex flex-col items-center justify-center gap-2 bg-navy/30 opacity-100 group-hover:opacity-0 transition-opacity duration-300 pointer-events-none">
+                        <i class="fa-solid fa-circle-play text-white text-4xl drop-shadow-lg"></i>
+                        <span class="text-white text-xs font-bold uppercase tracking-widest drop-shadow-lg">Hover to Play</span>
+                    </div>
+                    <video muted loop onmouseover="this.play()" onmouseout="this.pause(); this.currentTime=0;">
+                        <source src="assets/deep-perimeter-shield.mp4" type="video/mp4">
+                    </video>
+                    <div class="absolute bottom-0 left-0 right-0 z-20 p-3 bg-gradient-to-t from-navy to-transparent text-white text-sm">
+                        <p class="font-bold">Deep Perimeter Shield</p>
+                    </div>
+                </div>
+                <div class="video-card group shadow-lg reveal reveal-delay-3">
+                    <div class="absolute inset-0 z-10 flex flex-col items-center justify-center gap-2 bg-navy/30 opacity-100 group-hover:opacity-0 transition-opacity duration-300 pointer-events-none">
+                        <i class="fa-solid fa-circle-play text-white text-4xl drop-shadow-lg"></i>
+                        <span class="text-white text-xs font-bold uppercase tracking-widest drop-shadow-lg">Hover to Play</span>
+                    </div>
+                    <video muted loop onmouseover="this.play()" onmouseout="this.pause(); this.currentTime=0;">
+                        <source src="assets/expert-eradication.mp4" type="video/mp4">
+                    </video>
+                    <div class="absolute bottom-0 left-0 right-0 z-20 p-3 bg-gradient-to-t from-navy to-transparent text-white text-sm">
+                        <p class="font-bold">Expert Eradication</p>
+                    </div>
+                </div>
+                <div class="video-card group shadow-lg reveal reveal-delay-4">
+                    <div class="absolute inset-0 z-10 flex flex-col items-center justify-center gap-2 bg-navy/30 opacity-100 group-hover:opacity-0 transition-opacity duration-300 pointer-events-none">
+                        <i class="fa-solid fa-circle-play text-white text-4xl drop-shadow-lg"></i>
+                        <span class="text-white text-xs font-bold uppercase tracking-widest drop-shadow-lg">Hover to Play</span>
+                    </div>
+                    <video muted loop onmouseover="this.play()" onmouseout="this.pause(); this.currentTime=0;">
+                        <source src="assets/cst-treatment.mp4" type="video/mp4">
+                    </video>
+                    <div class="absolute bottom-0 left-0 right-0 z-20 p-3 bg-gradient-to-t from-navy to-transparent text-white text-sm">
+                        <p class="font-bold">CST Treatment</p>
+                    </div>
+                </div>
+                <div class="video-card group shadow-lg reveal reveal-delay-5">
+                    <div class="absolute inset-0 z-10 flex flex-col items-center justify-center gap-2 bg-navy/30 opacity-100 group-hover:opacity-0 transition-opacity duration-300 pointer-events-none">
+                        <i class="fa-solid fa-circle-play text-white text-4xl drop-shadow-lg"></i>
+                        <span class="text-white text-xs font-bold uppercase tracking-widest drop-shadow-lg">Hover to Play</span>
+                    </div>
+                    <video muted loop onmouseover="this.play()" onmouseout="this.pause(); this.currentTime=0;">
+                        <source src="assets/drenched-treatment.mp4" type="video/mp4">
+                    </video>
+                    <div class="absolute bottom-0 left-0 right-0 z-20 p-3 bg-gradient-to-t from-navy to-transparent text-white text-sm">
+                        <p class="font-bold">Drenched Treatment</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="relative py-24 px-4 bg-slate-50 bg-cover bg-center" style="background-image: url('assets/sepmlogowithants.png');">
+        <div class="absolute inset-0 bg-slate-50/90"></div>
+        <div class="container mx-auto relative z-10">
+            <div class="text-center mb-16 reveal">
+                <span class="text-yellow uppercase tracking-[0.3em] text-xs font-bold mb-4 block">Our Expertise</span>
+                <h2 class="serif text-4xl md:text-5xl font-bold text-navy mb-4">Comprehensive Pest <span class="text-yellow italic">Solutions</span></h2>
+                <p class="text-gray-600 max-w-xl mx-auto">Precision treatments engineered for lasting results — not just a spray and a promise.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="pest-card group relative overflow-hidden bg-white border border-gray-100 shadow-sm hover:shadow-2xl p-8 pt-9 rounded-2xl border-t-[3px] border-t-transparent hover:border-t-yellow hover:bg-navy transition-all duration-500 transform hover:-translate-y-1 reveal reveal-delay-1">
+                    <span class="pest-run-track">🪳</span>
+                    <div class="relative z-10">
+                        <div class="w-14 h-14 rounded-xl bg-navy/5 group-hover:bg-yellow flex items-center justify-center text-2xl mb-6 transition-colors duration-300">🪳</div>
+                        <h3 class="text-xl font-bold text-navy group-hover:text-white mb-2 transition-colors duration-300">Cockroach Control</h3>
+                        <p class="text-gray-600 group-hover:text-gray-300 text-sm leading-relaxed mb-6 transition-colors duration-300">Fast and effective removal of all cockroach species by targeting the nesting areas.</p>
+                        <a href="https://wa.me/601115342818" class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-navy group-hover:text-yellow transition-colors duration-300">Get a Quote <i class="fa-solid fa-arrow-right text-xs group-hover:translate-x-1 transition-transform"></i></a>
+                    </div>
+                </div>
+                <div class="pest-card group relative overflow-hidden bg-white border border-gray-100 shadow-sm hover:shadow-2xl p-8 pt-9 rounded-2xl border-t-[3px] border-t-transparent hover:border-t-yellow hover:bg-navy transition-all duration-500 transform hover:-translate-y-1 reveal reveal-delay-2">
+                    <span class="pest-run-track">🐛</span>
+                    <div class="relative z-10">
+                        <div class="w-14 h-14 rounded-xl bg-navy/5 group-hover:bg-yellow flex items-center justify-center text-2xl mb-6 transition-colors duration-300">🪵</div>
+                        <h3 class="text-xl font-bold text-navy group-hover:text-white mb-2 transition-colors duration-300">Termite Treatment</h3>
+                        <p class="text-gray-600 group-hover:text-gray-300 text-sm leading-relaxed mb-6 transition-colors duration-300">Targeted treatments against subterranean and drywood termites to safeguard your property.</p>
+                        <a href="https://wa.me/601115342818" class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-navy group-hover:text-yellow transition-colors duration-300">Get a Quote <i class="fa-solid fa-arrow-right text-xs group-hover:translate-x-1 transition-transform"></i></a>
+                    </div>
+                </div>
+                <div class="pest-card group relative overflow-hidden bg-white border border-gray-100 shadow-sm hover:shadow-2xl p-8 pt-9 rounded-2xl border-t-[3px] border-t-transparent hover:border-t-yellow hover:bg-navy transition-all duration-500 transform hover:-translate-y-1 reveal reveal-delay-3">
+                    <span class="pest-run-track">🐜</span>
+                    <div class="relative z-10">
+                        <div class="w-14 h-14 rounded-xl bg-navy/5 group-hover:bg-yellow flex items-center justify-center text-2xl mb-6 transition-colors duration-300">🐜</div>
+                        <h3 class="text-xl font-bold text-navy group-hover:text-white mb-2 transition-colors duration-300">Ant Control</h3>
+                        <p class="text-gray-600 group-hover:text-gray-300 text-sm leading-relaxed mb-6 transition-colors duration-300">Spray create barrier along perimeter to keep ants away.</p>
+                        <a href="https://wa.me/601115342818" class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-navy group-hover:text-yellow transition-colors duration-300">Get a Quote <i class="fa-solid fa-arrow-right text-xs group-hover:translate-x-1 transition-transform"></i></a>
+                    </div>
+                </div>
+                <div class="group relative overflow-hidden bg-white border border-gray-100 shadow-sm hover:shadow-2xl p-8 pt-9 rounded-2xl border-t-[3px] border-t-transparent hover:border-t-yellow hover:bg-navy transition-all duration-500 transform hover:-translate-y-1 reveal reveal-delay-4">
+                    <div class="relative z-10">
+                        <div class="w-14 h-14 rounded-xl bg-navy/5 group-hover:bg-yellow flex items-center justify-center text-2xl mb-6 transition-colors duration-300">🛌</div>
+                        <h3 class="text-xl font-bold text-navy group-hover:text-white mb-2 transition-colors duration-300">Bed Bug Removal</h3>
+                        <p class="text-gray-600 group-hover:text-gray-300 text-sm leading-relaxed mb-6 transition-colors duration-300">Specialized heat and chemical treatments for a peaceful sleep.</p>
+                        <a href="https://wa.me/601115342818" class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-navy group-hover:text-yellow transition-colors duration-300">Get a Quote <i class="fa-solid fa-arrow-right text-xs group-hover:translate-x-1 transition-transform"></i></a>
+                    </div>
+                </div>
+                <div class="pest-card group relative overflow-hidden bg-white border border-gray-100 shadow-sm hover:shadow-2xl p-8 pt-9 rounded-2xl border-t-[3px] border-t-transparent hover:border-t-yellow hover:bg-navy transition-all duration-500 transform hover:-translate-y-1 reveal reveal-delay-5">
+                    <span class="pest-run-track">🐀</span>
+                    <div class="relative z-10">
+                        <div class="w-14 h-14 rounded-xl bg-navy/5 group-hover:bg-yellow flex items-center justify-center text-2xl mb-6 transition-colors duration-300">🐀</div>
+                        <h3 class="text-xl font-bold text-navy group-hover:text-white mb-2 transition-colors duration-300">Rodent Control</h3>
+                        <p class="text-gray-600 group-hover:text-gray-300 text-sm leading-relaxed mb-6 transition-colors duration-300">Strategic trapping to keep rats and mice away.</p>
+                        <a href="https://wa.me/601115342818" class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-navy group-hover:text-yellow transition-colors duration-300">Get a Quote <i class="fa-solid fa-arrow-right text-xs group-hover:translate-x-1 transition-transform"></i></a>
+                    </div>
+                </div>
+                <div class="relative overflow-hidden bg-yellow p-8 rounded-2xl shadow-xl transition-all duration-300 transform hover:-translate-y-2 flex flex-col justify-center items-center text-center reveal reveal-delay-1">
+                    <h3 class="serif text-2xl font-bold mb-2 text-navy">Custom Plans</h3>
+                    <p class="mb-6 text-navy/80">Need a specialized solution for your business?</p>
+                    <a href="https://wa.me/601115342818" class="bg-navy text-white px-6 py-2 rounded-full font-bold hover:bg-white hover:text-navy transition">Request Quote</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section id="about" class="bg-navy text-white py-20 px-4">
+        <div class="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div class="md:pl-8 lg:pl-12 reveal">
+                <h2 class="text-4xl font-bold mb-6">Why Choose <span class="text-yellow">PestBro</span>?</h2>
+                <p class="text-lg mb-8 opacity-80">We provide strategic solutions using the latest technology to ensure your space remains pest-free.</p>
+                <ul class="space-y-4">
+                    <li class="flex items-center gap-3"><i class="fa-solid fa-circle-check text-yellow text-xl"></i><span>Professional Grade Equipment</span></li>
+                    <li class="flex items-center gap-3"><i class="fa-solid fa-circle-check text-yellow text-xl"></i><span>Guaranteed Long-Term Results</span></li>
+                    <li class="flex items-center gap-3"><i class="fa-solid fa-circle-check text-yellow text-xl"></i><span>Eco-Friendly & Safe Options</span></li>
+                    <li class="flex items-center gap-3"><i class="fa-solid fa-circle-check text-yellow text-xl"></i><span>Expert Technicians</span></li>
+                </ul>
+            </div>
+            <div class="relative reveal reveal-delay-2">
+                <div class="relative rounded-2xl shadow-2xl w-11/12 md:w-4/5 h-72 md:h-80 overflow-hidden mx-auto">
+                    <video autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover">
+                        <source src="assets/toolsvideo.mp4" type="video/mp4">
+                    </video>
+                    <video autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-contain">
+                        <source src="assets/pestbrovid.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="relative py-20 px-4 text-center bg-gray-100 bg-cover bg-center" style="background-image: url('assets/sepmlogowithants.png');">
+        <div class="absolute inset-0 bg-gray-100/90"></div>
+        <div class="container mx-auto max-w-2xl relative z-10">
+            <h2 class="text-4xl font-bold text-navy mb-4 reveal">Ready to Reclaim Your Space?</h2>
+            <p class="text-gray-600 mb-10">Stop the infestation before it spreads.</p>
+            <div class="bg-white p-8 rounded-3xl shadow-2xl border border-gray-100 reveal reveal-delay-1">
+                <div class="flex flex-col items-center gap-6">
+                    <div class="text-center">
+                        <span class="text-gray-500 uppercase text-sm font-bold tracking-widest">Contact Us</span>
+                        <div class="text-3xl font-bold text-navy mt-2">🇲🇾 📞 011-1534 2818</div>
+                    </div>
+                    <div class="w-full h-px bg-gray-200"></div>
+                    <a href="https://wa.me/601115342818" class="w-full bg-navy text-white py-4 rounded-xl font-bold text-lg hover:bg-blue-900 transition flex items-center justify-center gap-3">
+                        <i class="fa-brands fa-whatsapp text-2xl"></i> WhatsApp Us Now
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Announcement Marquee -->
+    <div class="bg-navy py-3 overflow-hidden border-y-2 border-yellow">
+        <div class="marquee-track">
+            <span class="flex items-center gap-3 px-6 text-yellow font-bold uppercase tracking-widest text-sm">
+                <span>🐜</span> Free Inspection This Month — Book Now
+                <span class="mx-4 text-white/30">|</span>
+                <span>🐜</span> 20+ Years of Trusted Pest Control
+                <span class="mx-4 text-white/30">|</span>
+                <span>🐜</span> WhatsApp Us For Same-Day Service
+                <span class="mx-4 text-white/30">|</span>
+            </span>
+            <span class="flex items-center gap-3 px-6 text-yellow font-bold uppercase tracking-widest text-sm">
+                <span>🐜</span> Free Inspection This Month — Book Now
+                <span class="mx-4 text-white/30">|</span>
+                <span>🐜</span> 20+ Years of Trusted Pest Control
+                <span class="mx-4 text-white/30">|</span>
+                <span>🐜</span> WhatsApp Us For Same-Day Service
+                <span class="mx-4 text-white/30">|</span>
+            </span>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12 px-4 border-t-4 border-yellow">
+        <div class="container mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="flex items-center gap-3">
+                <img src="assets/logo.jpg" alt="Logo" class="h-8 w-8 rounded-full object-cover border border-yellow">
+                <span class="text-xl font-bold tracking-tight">PestBro</span>
+            </div>
+            <p class="text-gray-500 text-xs">&copy; 2026 PestBro Enterprise. All Rights Reserved.</p>
+            <div class="flex gap-4 text-xl pr-0 md:pr-24">
+                <a href="#" class="hover:text-yellow transition"><i class="fa-brands fa-facebook"></i></a>
+                <a href="#" class="hover:text-yellow transition"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" class="hover:text-yellow transition"><i class="fa-brands fa-threads"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float -->
+    <a href="https://wa.me/601115342818" class="whatsapp-float" target="_blank">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const revealEls = document.querySelectorAll('.reveal');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.15 });
+            revealEls.forEach(el => observer.observe(el));
+        });
+    </script>
+
+</body>
+</html>
