@@ -263,11 +263,12 @@
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
                 <div class="video-card group shadow-lg reveal reveal-delay-1">
-                    <div class="absolute inset-0 z-10 flex flex-col items-center justify-center gap-2 bg-navy/30 opacity-100 group-hover:opacity-0 transition-opacity duration-300 pointer-events-none">
+                    <div class="play-hint absolute inset-0 z-10 flex flex-col items-center justify-center gap-2 bg-navy/30 opacity-100 group-hover:opacity-0 transition-opacity duration-300 pointer-events-none">
                         <i class="fa-solid fa-circle-play text-white text-4xl drop-shadow-lg"></i>
-                        <span class="text-white text-xs font-bold uppercase tracking-widest drop-shadow-lg">Hover to Play</span>
+                        <span class="hidden md:inline text-white text-xs font-bold uppercase tracking-widest drop-shadow-lg">Hover to Play</span>
+                        <span class="md:hidden text-white text-xs font-bold uppercase tracking-widest drop-shadow-lg">Tap to Play</span>
                     </div>
-                    <video muted loop onmouseover="this.play()" onmouseout="this.pause(); this.currentTime=0;">
+                    <video muted loop playsinline class="gallery-video" onmouseover="this.play()" onmouseout="this.pause(); this.currentTime=0;">
                         <source src="assets/precision-treatment.mp4" type="video/mp4">
                     </video>
                     <div class="absolute bottom-0 left-0 right-0 z-20 p-3 bg-gradient-to-t from-navy to-transparent text-white text-sm">
@@ -275,11 +276,12 @@
                     </div>
                 </div>
                 <div class="video-card group shadow-lg reveal reveal-delay-2">
-                    <div class="absolute inset-0 z-10 flex flex-col items-center justify-center gap-2 bg-navy/30 opacity-100 group-hover:opacity-0 transition-opacity duration-300 pointer-events-none">
+                    <div class="play-hint absolute inset-0 z-10 flex flex-col items-center justify-center gap-2 bg-navy/30 opacity-100 group-hover:opacity-0 transition-opacity duration-300 pointer-events-none">
                         <i class="fa-solid fa-circle-play text-white text-4xl drop-shadow-lg"></i>
-                        <span class="text-white text-xs font-bold uppercase tracking-widest drop-shadow-lg">Hover to Play</span>
+                        <span class="hidden md:inline text-white text-xs font-bold uppercase tracking-widest drop-shadow-lg">Hover to Play</span>
+                        <span class="md:hidden text-white text-xs font-bold uppercase tracking-widest drop-shadow-lg">Tap to Play</span>
                     </div>
-                    <video muted loop onmouseover="this.play()" onmouseout="this.pause(); this.currentTime=0;">
+                    <video muted loop playsinline class="gallery-video" onmouseover="this.play()" onmouseout="this.pause(); this.currentTime=0;">
                         <source src="assets/deep-perimeter-shield.mp4" type="video/mp4">
                     </video>
                     <div class="absolute bottom-0 left-0 right-0 z-20 p-3 bg-gradient-to-t from-navy to-transparent text-white text-sm">
@@ -287,11 +289,12 @@
                     </div>
                 </div>
                 <div class="video-card group shadow-lg reveal reveal-delay-3">
-                    <div class="absolute inset-0 z-10 flex flex-col items-center justify-center gap-2 bg-navy/30 opacity-100 group-hover:opacity-0 transition-opacity duration-300 pointer-events-none">
+                    <div class="play-hint absolute inset-0 z-10 flex flex-col items-center justify-center gap-2 bg-navy/30 opacity-100 group-hover:opacity-0 transition-opacity duration-300 pointer-events-none">
                         <i class="fa-solid fa-circle-play text-white text-4xl drop-shadow-lg"></i>
-                        <span class="text-white text-xs font-bold uppercase tracking-widest drop-shadow-lg">Hover to Play</span>
+                        <span class="hidden md:inline text-white text-xs font-bold uppercase tracking-widest drop-shadow-lg">Hover to Play</span>
+                        <span class="md:hidden text-white text-xs font-bold uppercase tracking-widest drop-shadow-lg">Tap to Play</span>
                     </div>
-                    <video muted loop onmouseover="this.play()" onmouseout="this.pause(); this.currentTime=0;">
+                    <video muted loop playsinline class="gallery-video" onmouseover="this.play()" onmouseout="this.pause(); this.currentTime=0;">
                         <source src="assets/expert-eradication.mp4" type="video/mp4">
                     </video>
                     <div class="absolute bottom-0 left-0 right-0 z-20 p-3 bg-gradient-to-t from-navy to-transparent text-white text-sm">
@@ -299,11 +302,12 @@
                     </div>
                 </div>
                 <div class="video-card group shadow-lg reveal reveal-delay-4">
-                    <div class="absolute inset-0 z-10 flex flex-col items-center justify-center gap-2 bg-navy/30 opacity-100 group-hover:opacity-0 transition-opacity duration-300 pointer-events-none">
+                    <div class="play-hint absolute inset-0 z-10 flex flex-col items-center justify-center gap-2 bg-navy/30 opacity-100 group-hover:opacity-0 transition-opacity duration-300 pointer-events-none">
                         <i class="fa-solid fa-circle-play text-white text-4xl drop-shadow-lg"></i>
-                        <span class="text-white text-xs font-bold uppercase tracking-widest drop-shadow-lg">Hover to Play</span>
+                        <span class="hidden md:inline text-white text-xs font-bold uppercase tracking-widest drop-shadow-lg">Hover to Play</span>
+                        <span class="md:hidden text-white text-xs font-bold uppercase tracking-widest drop-shadow-lg">Tap to Play</span>
                     </div>
-                    <video muted loop onmouseover="this.play()" onmouseout="this.pause(); this.currentTime=0;">
+                    <video muted loop playsinline class="gallery-video" onmouseover="this.play()" onmouseout="this.pause(); this.currentTime=0;">
                         <source src="assets/cst-treatment.mp4" type="video/mp4">
                     </video>
                     <div class="absolute bottom-0 left-0 right-0 z-20 p-3 bg-gradient-to-t from-navy to-transparent text-white text-sm">
@@ -311,11 +315,12 @@
                     </div>
                 </div>
                 <div class="video-card group shadow-lg reveal reveal-delay-5">
-                    <div class="absolute inset-0 z-10 flex flex-col items-center justify-center gap-2 bg-navy/30 opacity-100 group-hover:opacity-0 transition-opacity duration-300 pointer-events-none">
+                    <div class="play-hint absolute inset-0 z-10 flex flex-col items-center justify-center gap-2 bg-navy/30 opacity-100 group-hover:opacity-0 transition-opacity duration-300 pointer-events-none">
                         <i class="fa-solid fa-circle-play text-white text-4xl drop-shadow-lg"></i>
-                        <span class="text-white text-xs font-bold uppercase tracking-widest drop-shadow-lg">Hover to Play</span>
+                        <span class="hidden md:inline text-white text-xs font-bold uppercase tracking-widest drop-shadow-lg">Hover to Play</span>
+                        <span class="md:hidden text-white text-xs font-bold uppercase tracking-widest drop-shadow-lg">Tap to Play</span>
                     </div>
-                    <video muted loop onmouseover="this.play()" onmouseout="this.pause(); this.currentTime=0;">
+                    <video muted loop playsinline class="gallery-video" onmouseover="this.play()" onmouseout="this.pause(); this.currentTime=0;">
                         <source src="assets/drenched-treatment.mp4" type="video/mp4">
                     </video>
                     <div class="absolute bottom-0 left-0 right-0 z-20 p-3 bg-gradient-to-t from-navy to-transparent text-white text-sm">
@@ -337,7 +342,7 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="pest-card group relative overflow-hidden bg-white border border-gray-100 shadow-sm hover:shadow-2xl p-8 pt-9 rounded-2xl border-t-[3px] border-t-transparent hover:border-t-yellow hover:bg-navy transition-all duration-500 transform hover:-translate-y-1 reveal reveal-delay-1">
+                <div class="pest-card group relative overflow-hidden bg-white border-2 border-yellow/30 shadow-sm hover:shadow-2xl p-8 pt-9 rounded-2xl hover:border-yellow hover:bg-navy transition-all duration-500 transform hover:-translate-y-1 reveal reveal-delay-1">
                     <span class="pest-run-track">🪳</span>
                     <div class="relative z-10">
                         <div class="w-14 h-14 rounded-xl bg-navy/5 group-hover:bg-yellow flex items-center justify-center text-2xl mb-6 transition-colors duration-300">🪳</div>
@@ -346,7 +351,7 @@
                         <a href="https://wa.me/601115342818" class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-navy group-hover:text-yellow transition-colors duration-300">Get a Quote <i class="fa-solid fa-arrow-right text-xs group-hover:translate-x-1 transition-transform"></i></a>
                     </div>
                 </div>
-                <div class="pest-card group relative overflow-hidden bg-white border border-gray-100 shadow-sm hover:shadow-2xl p-8 pt-9 rounded-2xl border-t-[3px] border-t-transparent hover:border-t-yellow hover:bg-navy transition-all duration-500 transform hover:-translate-y-1 reveal reveal-delay-2">
+                <div class="pest-card group relative overflow-hidden bg-white border-2 border-yellow/30 shadow-sm hover:shadow-2xl p-8 pt-9 rounded-2xl hover:border-yellow hover:bg-navy transition-all duration-500 transform hover:-translate-y-1 reveal reveal-delay-2">
                     <span class="pest-run-track">🐛</span>
                     <div class="relative z-10">
                         <div class="w-14 h-14 rounded-xl bg-navy/5 group-hover:bg-yellow flex items-center justify-center text-2xl mb-6 transition-colors duration-300">🪵</div>
@@ -355,7 +360,7 @@
                         <a href="https://wa.me/601115342818" class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-navy group-hover:text-yellow transition-colors duration-300">Get a Quote <i class="fa-solid fa-arrow-right text-xs group-hover:translate-x-1 transition-transform"></i></a>
                     </div>
                 </div>
-                <div class="pest-card group relative overflow-hidden bg-white border border-gray-100 shadow-sm hover:shadow-2xl p-8 pt-9 rounded-2xl border-t-[3px] border-t-transparent hover:border-t-yellow hover:bg-navy transition-all duration-500 transform hover:-translate-y-1 reveal reveal-delay-3">
+                <div class="pest-card group relative overflow-hidden bg-white border-2 border-yellow/30 shadow-sm hover:shadow-2xl p-8 pt-9 rounded-2xl hover:border-yellow hover:bg-navy transition-all duration-500 transform hover:-translate-y-1 reveal reveal-delay-3">
                     <span class="pest-run-track">🐜</span>
                     <div class="relative z-10">
                         <div class="w-14 h-14 rounded-xl bg-navy/5 group-hover:bg-yellow flex items-center justify-center text-2xl mb-6 transition-colors duration-300">🐜</div>
@@ -364,7 +369,7 @@
                         <a href="https://wa.me/601115342818" class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-navy group-hover:text-yellow transition-colors duration-300">Get a Quote <i class="fa-solid fa-arrow-right text-xs group-hover:translate-x-1 transition-transform"></i></a>
                     </div>
                 </div>
-                <div class="group relative overflow-hidden bg-white border border-gray-100 shadow-sm hover:shadow-2xl p-8 pt-9 rounded-2xl border-t-[3px] border-t-transparent hover:border-t-yellow hover:bg-navy transition-all duration-500 transform hover:-translate-y-1 reveal reveal-delay-4">
+                <div class="group relative overflow-hidden bg-white border-2 border-yellow/30 shadow-sm hover:shadow-2xl p-8 pt-9 rounded-2xl hover:border-yellow hover:bg-navy transition-all duration-500 transform hover:-translate-y-1 reveal reveal-delay-4">
                     <div class="relative z-10">
                         <div class="w-14 h-14 rounded-xl bg-navy/5 group-hover:bg-yellow flex items-center justify-center text-2xl mb-6 transition-colors duration-300">🛌</div>
                         <h3 class="text-xl font-bold text-navy group-hover:text-white mb-2 transition-colors duration-300">Bed Bug Removal</h3>
@@ -372,7 +377,7 @@
                         <a href="https://wa.me/601115342818" class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-navy group-hover:text-yellow transition-colors duration-300">Get a Quote <i class="fa-solid fa-arrow-right text-xs group-hover:translate-x-1 transition-transform"></i></a>
                     </div>
                 </div>
-                <div class="pest-card group relative overflow-hidden bg-white border border-gray-100 shadow-sm hover:shadow-2xl p-8 pt-9 rounded-2xl border-t-[3px] border-t-transparent hover:border-t-yellow hover:bg-navy transition-all duration-500 transform hover:-translate-y-1 reveal reveal-delay-5">
+                <div class="pest-card group relative overflow-hidden bg-white border-2 border-yellow/30 shadow-sm hover:shadow-2xl p-8 pt-9 rounded-2xl hover:border-yellow hover:bg-navy transition-all duration-500 transform hover:-translate-y-1 reveal reveal-delay-5">
                     <span class="pest-run-track">🐀</span>
                     <div class="relative z-10">
                         <div class="w-14 h-14 rounded-xl bg-navy/5 group-hover:bg-yellow flex items-center justify-center text-2xl mb-6 transition-colors duration-300">🐀</div>
@@ -493,6 +498,24 @@
                 });
             }, { threshold: 0.15 });
             revealEls.forEach(el => observer.observe(el));
+        });
+    </script>
+
+    <script>
+        // Tap-to-play for gallery videos (mobile). Desktop keeps its hover behavior;
+        // this adds a click/tap toggle so touch devices can play/pause without hovering.
+        document.querySelectorAll('.gallery-video').forEach(video => {
+            video.addEventListener('click', () => {
+                const hint = video.parentElement.querySelector('.play-hint');
+                if (video.paused) {
+                    video.play();
+                    if (hint) hint.style.opacity = '0';
+                } else {
+                    video.pause();
+                    video.currentTime = 0;
+                    if (hint) hint.style.opacity = '1';
+                }
+            });
         });
     </script>
 
